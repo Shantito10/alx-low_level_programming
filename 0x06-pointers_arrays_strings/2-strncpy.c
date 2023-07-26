@@ -7,14 +7,17 @@
  * @n: number of bites to use from src
  * Return: concatenated string
  */
+
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	char *temp = dest;
 
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-	for ( ; i < n; i++)
-		dest[i] = '\0';
-
-	return (0);
+	for (; n != 0 && *src != '\0'; n--, src++)
+	{
+		*temp = *src;
+		temp++;
+	}
+	for (; n != 0 && *temp != '\0'; n--, temp++)
+		*temp = '\0';
+	return (dest);
 }
