@@ -38,6 +38,6 @@ int find_pali(char *n, char *r, int len)
 int is_palindrome(char *s)
 {
 	if (*s)
-		return (is_palindrome((s + 1)) +1);
+		return (is_palindrome((s + 1)) + 1);
 	return (0);
 }
