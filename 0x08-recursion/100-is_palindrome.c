@@ -10,32 +10,34 @@ int _strlen_recursion(char *s)
 		return (0);
 	return (1 + _strlen_recursion(s + 1));
 }
- /**
-  * find_pali - find length of string
-  * @s: string
-  * @y: length of string
-  * @x: length of string
-  * Return: return 0 if not palindrome, 1 if it is
-  */
-int find_pali(char *s, int y, int x)
+
+/**
+ * find_pali - gets length of string
+ * @n: pointer to a string
+ * @r: length of a string
+ * @len: length of a string
+ * Return: return 0 if its not palindrome return 1 if it is
+ */
+int find_pali(char *n, char *r, int len)
 {
-	if (*(s + y) == *(s + x))
+	if (*n == *(r + len) && len > 1)
 	{
-		if (y == x || y == x + 1)
-			return (1);
-		return (0 + find_pali(s, y + 1, x - 1));
+		n++;
+		return (find_pali(n, r, --len));
 	}
+	if (len == 1)
+		return (1);
 	return (0);
 }
 
 /**
- * is_palindrome - checks if a string is palindrome
- * @s: string
- * Return: 0 if not palindrome, 1 if it is
+ * is_palindrome - checks if a string is a palindrome
+ * @s: pointer to a string
+ * Return: return 0 if its not palindrome return 1 if it is
  */
 int is_palindrome(char *s)
 {
-	if (*s == '\0')
-		return (1);
-	return (find_pali(s, 0, _strlen_recursion(s) - 1));
+	if (*s)
+		return (is_palindrome((s + 1)) +1);
+	return (0);
 }
