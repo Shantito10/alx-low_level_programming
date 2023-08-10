@@ -1,13 +1,12 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * main - multiplies two positive numbers
- * @argc: number of arguments
- * @argv: arguments
+ * @argv: number of arguments
+ * @argc: arguments
  * Return: int
-**/
-
+ */
 int main(int argc, char *argv[])
 {
 	unsigned long mul;
@@ -19,7 +18,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	for (y = 1; x < argc; x++)
+	for (x = 1; x < argc; x++)
 	{
 		for (y = 0; argv[x][y] != '\0'; y++)
 		{
