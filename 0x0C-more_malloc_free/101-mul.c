@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main - multiplies two positive number
+ * main - multiplies two positive numbers
  * @argc: number of arguments
  * @argv: arguments
  * Return: int
- */
+**/
+
 int main(int argc, char *argv[])
 {
 	unsigned long mul;
@@ -17,7 +18,8 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	for (x = 1; x < argc; x++)
+
+	for (y = 1; x < argc; x++)
 	{
 		for (y = 0; argv[x][y] != '\0'; y++)
 		{
