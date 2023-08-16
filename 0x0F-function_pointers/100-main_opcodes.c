@@ -6,11 +6,10 @@
  * @argv: array of arguments
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int x;
-	int y = atoi(argv[1]);
-	char *p = (char *)main;
+	int bytes, i;
+	char *arr;
 
 	if (argc != 2)
 	{
@@ -18,18 +17,22 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	if (y < 0)
+	bytes = atoi(argv[1]);
+
+	if (bytes < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
-	for (x = 0; x < y; x++)
+	for (i = 0; i < bytes; i++)
 	{
-		printf("%02hhx", p[x]);
-		if (x != y - 1)
-			printf(" ");
+		if (i == bytes - 1)
+		{
+			printf("%02hhx\n", arr[i]);
+			break;
+		}
+		printf("%02hhx", arr[i]);
 	}
-	printf("\n");
 	return (0);
 }
