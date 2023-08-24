@@ -1,4 +1,21 @@
 #include "lists.h"
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * _strlen - to return to string length
+ * @s: character
+ * Return: required value
+ */
+int _strlen(const char *s)
+{
+	int y = 0;
+
+	while (s[y] != '\0')
+	{
+		y++;
+	}
+	return (y);
+}
 
 /**
  * print_list - prints all the elements of a list_t list
@@ -7,21 +24,17 @@
  */
 size_t print_list(const list_t *h)
 {
-	int check = 0;
+	size_t x = 0;
 
 	while (h)
 	{
-		if (h->str == NULL)
-		{
+		if (!h->str)
 			printf("[0] (nil)\n");
-		}
 		else
-		{
-			printf("[%d] %s\n", h->len, h->str);
-		}
-		check++;
-
+			printf("[%u] %s\n", h->len, h->str);
 		h = h->next;
+		x++;
 	}
-	return (check);
+
+	return (x);
 }
