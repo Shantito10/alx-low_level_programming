@@ -2,6 +2,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
+ * _strlen - get the length og the string
+ * @str: string
+ * Return: returns length
+ */
+unsigned int _strlen(char *str)
+{
+	unsigned int x;
+
+	for (x = 0; str[x]; x++)
+		;
+	return (x);
+}
+
+/**
  * add_node_end - adds a new node at the end of a list_t list
  * @head: pointer to the head of the list
  * @str: string to be added to the new node
