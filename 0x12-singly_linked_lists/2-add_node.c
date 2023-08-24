@@ -1,7 +1,19 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+/**
+ * _strlen - to return to string length
+ * @s: character
+ * Return: required value
+ */
+int _strlen(const char *s)
+{
+	int y = 0;
+
+	while (s[y] != '\0')
+	{
+		y++;
+	}
+	return (y);
+}
 
 /**
  * add_node - adds a new node at the beginning of a list
