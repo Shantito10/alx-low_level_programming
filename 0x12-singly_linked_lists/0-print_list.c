@@ -1,21 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * _strlen - to return to string length
- * @s: character
- * Return: required value
- */
-int _strlen(const char *s)
-{
-	int y = 0;
-
-	while (s[y] != '\0')
-	{
-		y++;
-	}
-	return (y);
-}
 
 /**
  * print_list - prints all the elements of a list_t list
