@@ -24,6 +24,26 @@ void _print(char *str, int l)
 }
 
 /**
+ * check_for_digits - checks for arguments to ensure that they are digits
+ * @av: arguments
+ * Return: 0 if digits, 1 if not
+ */
+int check_for_digits(char **av)
+{
+	int x, y;
+
+	for (x = 1; x < 3; x++)
+	{
+		for (y = 0; av[x][y]; y++)
+		{
+			if (av[x][y] < '0' || av[x][y] > '9')
+				return (1);
+		}
+	}
+	return (0);
+}
+
+/**
  * init - a string is initialized
  * @str: string
  * @len: length
