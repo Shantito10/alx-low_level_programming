@@ -1,6 +1,42 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+/**
+ * _print - moves and prints string
+ * @str: string
+ * @l: size of string
+ */
+void _print(char *str, int l)
+{
+	int a, c;
+
+	a = c = 0;
+	while (a < l)
+	{
+		if (str[a] != '\0')
+			c = l;
+		if (c || a == l - 1)
+			putchar(str[a]);
+		a++;
+	}
+	putchar('\n');
+	free(str);
+}
+
+/**
+ * init - a string is initialized
+ * @str: string
+ * @len: length
+ */
+void init(char *str, int len)
+{
+	int x;
+
+	for (x = 0; x < len; x++)
+		str[x] = '0';
+	str[x] = '\0';
+}
+
 
 /**
  * main - multiplies two positive numbers
