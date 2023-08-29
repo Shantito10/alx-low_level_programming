@@ -32,3 +32,29 @@ size_t print_listint_safe(const listint_t *head)
 
 	return (size);
 }
+
+/**
+ * rm - reallocates memory for array of pointers
+ * @list: the old list
+ * @size: size of the new list
+ * @new: new node
+ * Return: pointer to the new list
+ */
+const listint_t **rm(const listint_t **list, size_t size, const listint_t *new)
+{
+	const listint_t **count;
+	size_t a;
+
+	count = malloc(size * sizeof(listint_t *));
+
+	if (count == NULL)
+	{
+		free(list);
+		exit(98);
+	}
+	for (a = 0; a < size - 1; a++)
+		count[a] = list[a];
+	count[a] = new;
+	free(list);
+	return (count);
+}
