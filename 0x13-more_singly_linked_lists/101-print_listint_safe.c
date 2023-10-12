@@ -1,4 +1,25 @@
 #include "lists.h"
+/**
+ * free_listp - frees a linked list
+ * @head: head of a list
+ * Return: no return
+ */
+void free_listp(listp_t **head)
+{
+	listp_t *current;
+	listp_t *count;
+
+	if (head != NULL)
+	{
+		count = *head;
+		while ((current = count) != NULL)
+		{
+			count = count->next;
+			free(current);
+		}
+		*head = NULL;
+	}
+}
 
 /**
  * print_listint_safe - prints a listint_t linked list
@@ -7,54 +28,38 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	const listint_t *current, *count;
-	size_t size;
+	size_t size = 0;
+	listint_t *prev, *previous, *previously;
 
-	size = 0;
-
-	if (head == NULL)
-		return (0);
-
-	count = head;
-	current = head->next;
-
-	while (current != NULL && current < count)
+	prev = NULL;
+	while (head != NULL)
 	{
-		size += 1;
-		printf("[%p] %i\n", (void *)count, count->n);
-		count = count->next;
-		current = current->next;
-	}
-	printf("[%p] %i\n", (void *)count, count->n);
-	size += 1;
-	if (current)
-		printf("-> [%p] %i\n", (void *)current, current->n);
+		previous = malloc(sizeof(listp_t));
 
+		if (previous == NULL)
+			exit(98);
+
+		previous->p = (void *)head;
+		previous->next = prev;
+		prev = previous;
+
+		previously = prev;
+
+		while (previously->next != NULL)
+		{
+			previously = previously->next;
+			if (head == previously->p)
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&prev);
+				return (size);
+			}
+		}
+
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
+		size++;
+	}
+	free_listp(&prev);
 	return (size);
-}
-
-/**
- * rm - reallocates memory for array of pointers
- * @list: the old list
- * @size: size of the new list
- * @new: new node
- * Return: pointer to the new list
- */
-const listint_t **rm(const listint_t **list, size_t size, const listint_t *new)
-{
-	const listint_t **count;
-	size_t a;
-
-	count = malloc(size * sizeof(listint_t *));
-
-	if (count == NULL)
-	{
-		free(list);
-		exit(98);
-	}
-	for (a = 0; a < size - 1; a++)
-		count[a] = list[a];
-	count[a] = new;
-	free(list);
-	return (count);
 }
