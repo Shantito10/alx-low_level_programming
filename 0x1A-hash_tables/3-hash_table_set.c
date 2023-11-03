@@ -7,7 +7,6 @@
  * @ht: the hash table you want to add or update the key/value to
  * @key: the key (cannot be an empty string)
  * @value: the value associated with the key
- * (must be duplicate, can be an empty string)
  * Return: 1 if it succeeded, 0 otherwise
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
@@ -33,18 +32,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		tmp = tmp->next;
 	}
-
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
 		return (0);
-
 	node->key = strdup(key);
 	if (node->key == NULL)
 	{
 		free(node);
 		return (0);
 	}
-
 	node->value = strdup(value);
 	if (node->value == NULL)
 	{
@@ -52,7 +48,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free(node);
 		return (0);
 	}
-
 	node->next = ht->array[index];
 	ht->array[index] = node;
 	return (1);
